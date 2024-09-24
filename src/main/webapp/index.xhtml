@@ -5,16 +5,39 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:form>
-        <h:outputLabel value="Hello, world"/><br/>
-        Title:
-        <h:inputText value="#{todoBean.todo.title}" /><br/>
-        Description:
-        <h:inputText value="#{todoBean.todo.description}" /><br/>
-        Status:
-        <h:inputText value="#{todoBean.todo.status}" /><br/>
-        <h:commandButton action="#{todoBean.createTodo()}" value="Create Todo" />
-    </h:form>
-</f:view>
+<head>
+    <title>Todo List</title>
+</head>
+<body>
+<h2>Todo List</h2>
+
+<h:dataTable value="#{todoBean.todoList}" var="item" border="1">
+    <h:column>
+        <f:facet name="header">Title</f:facet>
+        #{item.title}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Description</f:facet>
+        #{item.description}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Status</f:facet>
+        #{item.status}
+    </h:column>
+    <h:column>
+        <f:facet name="header">Action</f:facet>
+        <h:form>
+            <h:commandButton value="Update" action="#{todoBean.editTodo(item.id)}" />
+            <h:commandButton value="Delete" action="#{todoBean.deleteTodo(item)}" />
+        </h:form>
+    </h:column>
+</h:dataTable>
+
+<!-- Link to go back to the todo form -->
+<br/>
+<h:form>
+    <h:commandButton value="Add New Todo" action="create-todo.xhtml" />
+</h:form>
+
+</body>
 </html>
