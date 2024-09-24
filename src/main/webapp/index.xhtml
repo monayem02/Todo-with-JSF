@@ -6,6 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="Hello, world"/>
+    <h:form>
+        <h:outputLabel value="Hello, world"/><br/>
+        Title:
+        <h:inputText value="#{todoBean.todo.title}" /><br/>
+        Description:
+        <h:inputText value="#{todoBean.todo.description}" /><br/>
+        Status:
+        <h:inputText value="#{todoBean.todo.status}" /><br/>
+        <h:commandButton action="#{todoBean.createTodo()}" value="Create Todo" />
+    </h:form>
 </f:view>
 </html>
