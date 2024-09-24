@@ -1,11 +1,10 @@
-package org.dsi.todowithjsf.bean;
+package org.dsi.todo.bean;
 
 import jakarta.ejb.EJB;
 import jakarta.faces.view.ViewScoped;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.dsi.todowithjsf.dao.TodoDao;
-import org.dsi.todowithjsf.entity.Todo;
+import org.dsi.todo.dao.TodoDao;
+import org.dsi.todo.entity.Todo;
 
 import java.io.Serializable;
 

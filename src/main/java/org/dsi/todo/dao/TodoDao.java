@@ -1,10 +1,10 @@
-package org.dsi.todowithjsf.dao;
+package org.dsi.todo.dao;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import org.dsi.todowithjsf.entity.Todo;
+import org.dsi.todo.entity.Todo;
 
 import java.sql.SQLException;
 

@@ -1,4 +1,4 @@
-package org.dsi.todowithjsf.entity;
+package org.dsi.todo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
