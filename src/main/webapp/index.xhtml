@@ -1,20 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:form>
-        <h:outputLabel value="Hello, world"/><br/>
-        Title:
-        <h:inputText value="#{todoBean.todo.title}" /><br/>
-        Description:
-        <h:inputText value="#{todoBean.todo.description}" /><br/>
-        Status:
-        <h:inputText value="#{todoBean.todo.status}" /><br/>
-        <h:commandButton action="#{todoBean.createTodo()}" value="Create Todo" />
-    </h:form>
-</f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Todo List</title>
+    <h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css" />
+    <style>
+        .ui-paginator {
+            background: #fff !important;
+            border: none !important;
+        }
+        body .ui-card .ui-card-content {
+            padding-bottom: 0 !important;
+        }
+
+        .ui-paginator-rpp-options {
+            padding: 4px;
+            background: white;
+            border-radius: 3px;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div class="flex justify-content-center">
+        <div class="sm:col-8">
+            <p:card styleClass="pb-0">
+                <p:commandButton value="New Todo" icon="pi pi-plus" action="create-todo.xhtml?faces-redirect=true"
+                                 styleClass="ui-button-success mb-3" style="margin-right: .5rem">
+                </p:commandButton>
+                <h:form class="flex flex-column align-items-center">
+                    <p:dataTable var="todo" value="#{todoBean.todoList}" id="todoTable" editable="true"  styleClass="tableStyle"
+                                 rowKey="#{todoBean.todo.id}" paginator="true" rows="5" selectionRowMode="add" paginatorPosition="bottom"
+                                 rowsPerPageTemplate="5,10,15" selectionMode="single">
+                        <p:column field="title" headerText="Title">
+                            <h:outputText value="#{todo.title}" />
+                        </p:column>
+
+                        <p:column field="description" headerText="Description">
+                            <h:outputText value="#{todo.description}" />
+                        </p:column>
+
+                        <p:column field="status" headerText="Status">
+                            <h:outputText value="#{todo.status}" />
+                        </p:column>
+
+                        <p:column headerText="Action">
+                            <p:commandButton styleClass="edit-button rounded-button ui-button-success mr-2"
+                                             icon="pi pi-pencil" action="#{todoBean.editTodo(todo.id)}">
+                            </p:commandButton>
+                            <p:commandButton class="ui-button-warning rounded-button" update="todoTable"
+                                             icon="pi pi-trash" action="#{todoBean.deleteTodo(todo)}">
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:card>
+        </div>
+    </div>
+</h:body>
 </html>
