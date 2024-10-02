@@ -7,6 +7,8 @@
     <h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css" />
     <style>
         .ui-paginator {
+            margin-top: 4px;
+            margin-bottom: -20px;
             background: #fff !important;
             border: none !important;
         }
@@ -19,9 +21,14 @@
             background: white;
             border-radius: 3px;
         }
+
+        .ui-filter-column .ui-column-customfilter .custom-filter {
+            width: 100%;
+            box-sizing: border-box;
+        }
     </style>
 </h:head>
-<h:body>
+<h:body style="background: #e5e5e5">
     <div class="flex justify-content-center">
         <div class="sm:col-8">
             <p:card styleClass="pb-0">

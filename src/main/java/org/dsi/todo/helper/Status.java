@@ -1,9 +1,11 @@
 package org.dsi.todo.helper;
 
 public enum Status {
-    SUBMITTED("Submitted"),
-    REJECTED("Rejected"),
-    APPROVED("Approved");
+    PENDING("Pending"),
+    IN_PROGRESS("In Progress"),
+    COMPLETED("Completed"),
+    ON_HOLD("On Hold"),
+    CANCELED("Canceled");
 
     private String label;
 
