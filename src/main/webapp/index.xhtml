@@ -28,7 +28,7 @@
                 <p:commandButton value="New Todo" icon="pi pi-plus" action="#{todoBean.prepareCreateTodo()}"
                                  styleClass="ui-button-success mb-3" style="margin-right: .5rem" />
                 <h:form class="flex flex-column align-items-center">
-                    <p:dataTable var="todo" value="#{todoBean.todoList}" id="todoTable" editable="true"  styleClass="tableStyle"
+                    <p:dataTable var="todo" value="#{todoBean.todoList}" id="todoTable" editable="true"  styleClass="tableStyle" widgetVar="todoTable"
                                  rowKey="#{todoBean.todo.id}" paginator="true" rows="5" selectionRowMode="add" paginatorPosition="bottom"
                                  rowsPerPageTemplate="5,10,15" selectionMode="single">
                         <p:column field="title" headerText="Title">
@@ -39,8 +39,14 @@
                             <h:outputText value="#{todo.description}" />
                         </p:column>
 
-                        <p:column field="status" headerText="Status">
-                            <h:outputText value="#{todo.status}" />
+                        <p:column field="status" headerText="Status" filterMatchMode="exact">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('todoTable').filter()" styleClass="ui-custom-filter w-12">
+                                    <f:selectItem itemLabel="All" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{todoBean.statuses}" var="status" itemValue="#{status}" itemLabel="#{status.label}" />
+                                    <f:selectItems value="#{todo.status}" />
+                                </p:selectOneMenu>
+                            </f:facet>
                         </p:column>
 
                         <p:column headerText="Action">

@@ -18,13 +18,17 @@
                         <div class="field grid">
                             <p:outputLabel for="title" styleClass="col-fixed" style="width:100px" value="Title:"/>
                             <div class="col">
-                                <p:inputText id="title" value="#{todoBean.todo.title}"/>
+                                <p:inputText id="title" value="#{todoBean.todo.title}">
+                                    <f:validateLength minimum="2"/>
+                                </p:inputText>
                             </div>
                         </div>
                         <div class="field grid">
                             <p:outputLabel for="description" styleClass="col-fixed" style="width:100px" value="Description:"/>
                             <div class="col">
-                                <p:inputText id="description" value="#{todoBean.todo.description}"/>
+                                <p:inputText id="description" value="#{todoBean.todo.description}" label="Description">
+                                    <f:validateLength minimum="2"/>
+                                </p:inputText>
                             </div>
                         </div>
                         <div class="field grid">
