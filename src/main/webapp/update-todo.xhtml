@@ -1,52 +1,46 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/templates/base-layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<h:head>
-    <h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css" />
-</h:head>
-
-<h:body style="background: #e5e5e5">
-    <div class="flex justify-content-center">
-        <div class="sm:col-8">
-            <p:card>
-                <h:form class="flex flex-column align-items-center">
-                    <div>
-                        <h2>Update Todo</h2>
-                        <h:inputHidden value="#{todoBean.todo.id}" />
-                        <div class="field grid">
-                            <p:outputLabel for="title" styleClass="col-fixed" style="width:100px" value="Title:"/>
-                            <div class="col">
-                                <p:inputText id="title" value="#{todoBean.todo.title}">
-                                    <f:validateLength minimum="2"/>
-                                </p:inputText>
-                            </div>
-                        </div>
-                        <div class="field grid">
-                            <p:outputLabel for="description" styleClass="col-fixed" style="width:100px" value="Description:"/>
-                            <div class="col">
-                                <p:inputText id="description" value="#{todoBean.todo.description}" label="Description">
-                                    <f:validateLength minimum="2"/>
-                                </p:inputText>
-                            </div>
-                        </div>
-                        <div class="field grid">
-                            <p:outputLabel for="status" styleClass="col-fixed" style="width:100px" value="Status:"/>
-                            <div class="col">
-                                <p:selectOneMenu id="status" value="#{todoBean.todo.status}" style="width:100%">
-                                    <f:selectItems value="#{todoBean.statuses}" var="status" itemValue="#{status}" itemLabel="#{status.label}" />
-                                </p:selectOneMenu>
-                            </div>
-                        </div>
-                        <div class="flex justify-content-end gap-2">
-                            <p:commandButton value="Cancel" styleClass="ui-button-warning" action="index.xhtml?faces-redirect=true"/>
-                            <p:commandButton value="Update" action="#{todoBean.updateTodo(todoBean.todo.id, todoBean.todo)}"/>
-                        </div>
+    <ui:define name="title">Update Todo</ui:define>
+    <ui:define name="content">
+        <h:form styleClass="flex flex-column align-items-center">
+            <div>
+                <h2>Update Todo</h2>
+                <h:inputHidden value="#{todoBean.todo.id}" />
+                <div class="field grid">
+                    <p:outputLabel for="title" styleClass="col-fixed" style="width:100px" value="Title:"/>
+                    <div class="col">
+                        <p:inputText id="title" value="#{todoBean.todo.title}">
+                            <f:validateLength minimum="2"/>
+                        </p:inputText>
                     </div>
-                </h:form>
-            </p:card>
-        </div>
-    </div>
-</h:body>
-</html>
+                </div>
+                <div class="field grid">
+                    <p:outputLabel for="description" styleClass="col-fixed" style="width:100px" value="Description:"/>
+                    <div class="col">
+                        <p:inputText id="description" value="#{todoBean.todo.description}" label="Description">
+                            <f:validateLength minimum="2"/>
+                        </p:inputText>
+                    </div>
+                </div>
+                <div class="field grid">
+                    <p:outputLabel for="status" styleClass="col-fixed" style="width:100px" value="Status:"/>
+                    <div class="col">
+                        <p:selectOneMenu id="status" value="#{todoBean.todo.status}" style="width:100%">
+                            <f:selectItems value="#{todoBean.statuses}" var="status" itemValue="#{status}" itemLabel="#{status.label}" />
+                        </p:selectOneMenu>
+                    </div>
+                </div>
+                <div class="flex justify-content-end gap-2">
+                    <p:commandButton value="Cancel" styleClass="ui-button-warning" action="index.xhtml?faces-redirect=true"/>
+                    <p:commandButton value="Update" action="#{todoBean.updateTodo(todoBean.todo.id, todoBean.todo)}"/>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
