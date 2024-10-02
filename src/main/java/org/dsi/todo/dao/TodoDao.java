@@ -24,7 +24,7 @@ public class TodoDao {
         return getEntityManager().getTransaction();
     }
 
-    public Todo createTodo(Todo todo) throws SQLException {
+    public void createTodo(Todo todo) throws SQLException {
         EntityTransaction transaction = getEntityTransaction();
         try {
             if (!transaction.isActive()) {
@@ -32,7 +32,6 @@ public class TodoDao {
             }
             getEntityManager().persist(todo);
             transaction.commit();
-            return todo;
         } catch (Exception e) {
             System.out.println("Error while creating todo: " + e.getMessage());
             transaction.rollback();
