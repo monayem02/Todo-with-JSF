@@ -29,9 +29,10 @@ public class TodoBean implements Serializable {
         this.todo = todo;
     }
 
-    public void createTodo() throws Exception {
+    public String createTodo() throws Exception {
         todoDao.createTodo(todo);
         todo = new Todo();
+        return "index.xhtml?faces-redirect=true";
     }
 
     public List<Todo> getTodoList() throws SQLException {
