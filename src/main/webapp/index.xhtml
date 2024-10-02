@@ -25,9 +25,8 @@
     <div class="flex justify-content-center">
         <div class="sm:col-8">
             <p:card styleClass="pb-0">
-                <p:commandButton value="New Todo" icon="pi pi-plus" action="create-todo.xhtml?faces-redirect=true"
-                                 styleClass="ui-button-success mb-3" style="margin-right: .5rem">
-                </p:commandButton>
+                <p:commandButton value="New Todo" icon="pi pi-plus" action="#{todoBean.prepareCreateTodo()}"
+                                 styleClass="ui-button-success mb-3" style="margin-right: .5rem" />
                 <h:form class="flex flex-column align-items-center">
                     <p:dataTable var="todo" value="#{todoBean.todoList}" id="todoTable" editable="true"  styleClass="tableStyle"
                                  rowKey="#{todoBean.todo.id}" paginator="true" rows="5" selectionRowMode="add" paginatorPosition="bottom"

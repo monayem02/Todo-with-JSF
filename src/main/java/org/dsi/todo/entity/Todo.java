@@ -1,9 +1,6 @@
 package org.dsi.todo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Todo {
@@ -12,6 +9,7 @@ public class Todo {
     private Long id;
     private String title;
     private String description;
+
     private String status;
 
     public Long getId() {

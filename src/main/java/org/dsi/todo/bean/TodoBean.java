@@ -2,13 +2,15 @@ package org.dsi.todo.bean;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.faces.view.ViewScoped;
+import jakarta.faces.model.SelectItem;
 import jakarta.inject.Named;
 import org.dsi.todo.dao.TodoDao;
 import org.dsi.todo.entity.Todo;
+import org.dsi.todo.helper.Status;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 @Named
@@ -27,6 +29,11 @@ public class TodoBean implements Serializable {
 
     public void setTodo(Todo todo) {
         this.todo = todo;
+    }
+
+    public String prepareCreateTodo() {
+        todo = new Todo();
+        return "create-todo.xhtml?faces-redirect=true";
     }
 
     public String createTodo() throws Exception {
@@ -51,10 +58,17 @@ public class TodoBean implements Serializable {
     public String updateTodo(Long id, Todo updatedTodo){
         try {
             todoDao.updateTodo(id, updatedTodo);
+            todo = new Todo();
             return "index.xhtml?faces-redirect=true";
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<SelectItem> getStatuses() {
+        return Arrays.stream(Status.values())
+                .map(status -> new SelectItem(status, status.getLabel()))
+                .toList();
     }
 }
