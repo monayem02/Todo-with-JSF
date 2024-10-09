@@ -7,8 +7,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: todo
-    ports:
-      - "5432:5432"
     networks:
       - todo-network
     volumes:
@@ -22,6 +20,7 @@ services:
       - todo-network
     depends_on:
       - postgres
+
 volumes:
   postgres_data:
     driver: local

@@ -5,11 +5,6 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Verify the WAR file is built
-RUN ls /app
-RUN ls /app/target
-
-
 # Stage 2
 FROM ghcr.io/eclipse-ee4j/glassfish:7.0.18
 
